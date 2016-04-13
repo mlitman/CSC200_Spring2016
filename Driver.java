@@ -3,9 +3,18 @@ public class Driver
 {
 	public static void main(String[] args)
 	{
-		String s = "hello";
-		String s2 = "elephant";
-		System.out.println(Driver.removeVowels(s));
+		String s = "-124";
+		System.out.println(s + 5);
+		System.out.println(Driver.stringToInt(s) + 5);
+		System.out.println(Integer.parseInt(s) + 5);
+	}
+	
+	//this guy should take a String representation of a binary number
+	//as a parameter and return as a int the decimal equivalent
+	//"1011" -> 11
+	static int binaryToInteger(String bin)
+	{
+		
 	}
 	
 	//return the integer version of the char parameter
@@ -19,7 +28,23 @@ public class Driver
 	//"124" -> 124
 	static int stringToInt(String s)
 	{
-		return -1;
+		int place = 1;
+		int total = 0;
+		char currChar;
+		for(int i = s.length()-1; i >= 0; i--)
+		{
+			currChar = s.charAt(i);
+			if(currChar == '-')
+			{
+				return total * -1;
+			}
+			else
+			{
+				total += (Driver.charToInt(currChar) * place);
+				place *= 10;
+			}
+		}
+		return total;
 	}
 	
 	static String removeChars(String s, String charsToRemove)
