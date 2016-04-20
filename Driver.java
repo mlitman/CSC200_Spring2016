@@ -1,11 +1,59 @@
+import java.util.Random;
+
 
 public class Driver 
 {
 	public static void main(String[] args)
 	{
-		String s = "hello world";
-		String answer = Driver.substring(s, 2, 7);
-		System.out.println(answer);
+		int[] arrayOfNumbers = new int[10];
+		Driver.fillArrayWithRandomInts(arrayOfNumbers);
+		Driver.printIntArray(arrayOfNumbers);
+		Driver.sortArray(arrayOfNumbers);
+		Driver.printIntArray(arrayOfNumbers);
+	}
+	
+	//Homework
+	static void sortArray(int[] ar)
+	{
+		//put the elements of the array in order SOMEHOW!!!
+	}
+	
+	static void fillArrayWithRandomInts(int[] ar)
+	{
+		Random r = new Random();
+		for(int i = 0; i < ar.length; i++)
+		{
+			ar[i] = r.nextInt(101);
+		}
+	}
+	
+	static void printIntArray(int[] ar)
+	{
+		for(int i = 0; i < ar.length; i++)
+		{
+			System.out.print(ar[i] + " ");
+		}
+		System.out.println();
+	}
+	
+	static String charArrayToString(char[] ar)
+	{
+		String answer = "";
+		for(int i = 0; i < ar.length; i++)
+		{
+			answer += ar[i];
+		}
+		return answer;
+	}
+	
+	static char[] stringToCharArray(String s)
+	{
+		char[] ar = new char[s.length()];
+		for(int i = 0; i < s.length(); i++)
+		{
+			ar[i] = s.charAt(i);
+		}
+		return ar;
 	}
 	
 	static String substring(String s, int beginPos, int endPos)
