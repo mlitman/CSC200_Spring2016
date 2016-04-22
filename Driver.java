@@ -8,14 +8,68 @@ public class Driver
 		int[] arrayOfNumbers = new int[10];
 		Driver.fillArrayWithRandomInts(arrayOfNumbers);
 		Driver.printIntArray(arrayOfNumbers);
-		Driver.sortArray(arrayOfNumbers);
+		Driver.bubbleSort(arrayOfNumbers);
 		Driver.printIntArray(arrayOfNumbers);
 	}
 	
 	//Homework
-	static void sortArray(int[] ar)
+	static void bubbleSort(int[] ar)
 	{
-		//put the elements of the array in order SOMEHOW!!!
+		
+	}
+	static void ghettoSort(int[] ar)
+	{
+		int[] answer = new int[ar.length];
+		int[] arCopy = new int[ar.length];
+		Driver.copyArray(ar, arCopy);
+		int posOfSmallest;
+		int currPos = 0;
+		while(arCopy.length > 0)
+		{
+			posOfSmallest = Driver.positionOfSmallest(arCopy);
+			answer[currPos] = arCopy[posOfSmallest];
+			currPos++;
+			arCopy = Driver.removeAtPos(posOfSmallest, arCopy);
+		}
+		Driver.copyArray(answer, ar);
+	}
+	
+	static void copyArray(int[] source, int[] destination)
+	{
+		for(int i = 0; i < source.length; i++)
+		{
+			destination[i] = source[i];
+		}
+	}
+	
+	static int[] removeAtPos(int pos, int[] ar)
+	{
+		int[] answer = new int[ar.length - 1];
+		int currPos = 0;
+		for(int i = 0; i < pos; i++)
+		{
+			answer[currPos] = ar[i];
+			currPos++;
+		}
+		for(int i = pos+1; i < ar.length; i++)
+		{
+			answer[currPos] = ar[i];
+			currPos++;
+		}
+		return answer;
+	}
+	
+	static int positionOfSmallest(int[] ar)
+	{
+		int winnerPos = 0;
+		for(int i = 1; i < ar.length; i++)
+		{
+			if(ar[i] < ar[winnerPos])
+			{
+				winnerPos = i;
+			}
+		}
+		return winnerPos;
 	}
 	
 	static void fillArrayWithRandomInts(int[] ar)
