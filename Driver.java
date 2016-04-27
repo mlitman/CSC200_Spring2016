@@ -8,15 +8,47 @@ public class Driver
 		int[] arrayOfNumbers = new int[10];
 		Driver.fillArrayWithRandomInts(arrayOfNumbers);
 		Driver.printIntArray(arrayOfNumbers);
-		Driver.bubbleSort(arrayOfNumbers);
+		Driver.mergeSort(arrayOfNumbers);
 		Driver.printIntArray(arrayOfNumbers);
 	}
 	
+	
 	//Homework
+	static void mergeSort(int[] ar)
+	{
+		Driver.mergeSortHelper(ar, 0, ar.length-1);
+	}
+	
+	static void mergeSortHelper(int[] ar, int begin, int end)
+	{
+		if(begin != end)
+		{
+			//call mergesort on left
+			//call mergesort on right
+			//do merge step
+		}
+	}
+	
 	static void bubbleSort(int[] ar)
 	{
+		int temp;
+		int follower;
+		int currStart = 1;
 		
+		while(currStart < ar.length)
+		{
+			follower = currStart;
+			while(follower != 0 && ar[follower] < ar[follower-1])
+			{
+				temp = ar[follower];
+				ar[follower] = ar[follower - 1];
+				ar[follower-1] = temp;
+				follower--;
+			}
+			currStart++;
+		}
 	}
+	
 	static void ghettoSort(int[] ar)
 	{
 		int[] answer = new int[ar.length];
